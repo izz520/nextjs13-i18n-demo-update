@@ -6,6 +6,7 @@ import { dir } from 'i18next'
 
 const inter = Inter({ subsets: ['latin'] })
 import { ILanguages, languages } from '@/i18n/config'
+import Header from '@/components/Header'
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }))
@@ -28,7 +29,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang={lng} dir={dir(lng)}>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header/>
+        {children}
+      </body>
     </html>
   )
 }
